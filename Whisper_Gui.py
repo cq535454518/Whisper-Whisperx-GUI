@@ -111,6 +111,7 @@ class WinGUI(Tk):
                             config_data[self.num] = {}
                             config_data[self.num]['path'] = os.path.join(parent, filename)
                             config_data[self.num]['config'] = file_config
+                            config_data[self.num]['custom'] = "0"
                             self.num += 1
 
                 elif os.path.isfile(rootdir):
@@ -120,6 +121,7 @@ class WinGUI(Tk):
                     config_data[self.num] = {}
                     config_data[self.num]['path'] = rootdir
                     config_data[self.num]['config'] = file_config
+                    config_data[self.num]['custom'] = "0"
                     self.num += 1
 
                 else:
@@ -177,6 +179,7 @@ class WinGUI(Tk):
                 config_data[self.num] = {}
                 config_data[self.num]['path'] = paths
                 config_data[self.num]['config'] = file_config
+                config_data[self.num]['custom'] = "0"
                 self.num += 1
 
         btn = Button(self, text="选择文件", command=select_files)
@@ -194,14 +197,15 @@ class WinGUI(Tk):
         btn.place(relx=0.615, rely=0.4, relwidth=0.16, height=24)
         return btn
 
-    def __tk_button_application_config(self):
-        def application_config():
-            global config_data
-            file_config = self.create_all_config(object_list)
-            for n in range(len(config_data)):
+    def application_config(self, config_all=True):
+        global config_data
+        file_config = self.create_all_config(object_list)
+        for n in range(len(config_data)):
+            if config_all or config_data[n]['custom'] != "1":
                 config_data[n]['config'] = file_config
 
-        btn = Button(self, text="配置应用到所有", command=application_config)
+    def __tk_button_application_config(self):
+        btn = Button(self, text="配置应用到所有", command=self.application_config)
         btn.place(relx=0.81, rely=0.4, relwidth=0.16, height=24)
         return btn
 
@@ -288,6 +292,7 @@ class WinGUI(Tk):
             self.tk_table_task_list.set(tree_num, column='状态', value="识别中~")
             commandStr = create_commandStr(file_path, output_dirInput, tree_num)
             print(commandStr)
+            return 0
             start_time = time.time()
             out = subprocess.run(commandStr)
             # (out, err) = out.communicate()
@@ -635,7 +640,11 @@ class Win(WinGUI):
             now_id = now_task_value[0]
             file_config = self.create_all_config(object_list)
             config_data[int(now_id)]['config'] = file_config
+            config_data[int(now_id)]['custom'] = "1"
             print("实时保存配置到任务", now_id)
+        else:
+            self.application_config(config_all=False)
+
 
     def __event_bind(self):
         self.tk_table_task_list.bind('<<TreeviewSelect>>', self.load_config_ui)
