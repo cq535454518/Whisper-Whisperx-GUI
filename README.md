@@ -1,5 +1,6 @@
 # Whisper GUI
 
+![image-20230205172938535](https://cdn.jsdelivr.net/gh/cq535454518/cq_images@main/img1/image-20230205172938535.png)
 
 本工具是python tkinter编写的一个简单的Gui，任务批量管理器。通过Gui选项生成*CMD*(command),来调用whisper，达到批量生成，管理的目的。
 
@@ -55,8 +56,6 @@ The supported operations are as follows
 
 还有英文版的界面
 There is also an English version of the interface
-
-![image-20230205172938535](https://cdn.jsdelivr.net/gh/cq535454518/cq_images@main/img1/image-20230205172938535.png)
 
 ![image-20230205171031737](https://cdn.jsdelivr.net/gh/cq535454518/cq_images@main/img1/image-20230205171031737.png)
 
