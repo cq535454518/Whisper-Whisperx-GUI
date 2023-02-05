@@ -70,13 +70,12 @@ This tool only provides a user-friendly gui interface, which is suitable for peo
 ### 请确认已有Pyhton以及FFmpeg
 ###Please confirm that Pyhton and FFmpeg are available
 ```
-```
 python --version
 python --version
 ffmpeg -version
 ffmpeg -version
 ```
-```
+
 ### 执行run.vbs/run.bat
 ###Execute run.vbs/run.bat
 这样启动可以无窗口直接启动
