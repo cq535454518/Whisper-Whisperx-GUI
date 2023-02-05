@@ -49,16 +49,16 @@ The supported operations are as follows
 
 ## 界面Interface
 
-![image-20230205164851836](C:\Users\53545\AppData\Roaming\Typora\typora-user-images\image-20230205164851836.png)
+![image-20230205164851836](https://cdn.jsdelivr.net/gh/cq535454518/cq_images@main/img1/image-20230205164851836.png)
 
-![image-20230205170946355](C:\Users\53545\AppData\Roaming\Typora\typora-user-images\image-20230205170946355.png)
+![image-20230205170946355](https://cdn.jsdelivr.net/gh/cq535454518/cq_images@main/img1/image-20230205170946355.png)
 
 还有英文版的界面
 There is also an English version of the interface
 
-![image-20230205172938535](C:\Users\53545\AppData\Roaming\Typora\typora-user-images\image-20230205172938535.png)
+![image-20230205172938535](https://cdn.jsdelivr.net/gh/cq535454518/cq_images@main/img1/image-20230205172938535.png)
 
-![image-20230205171031737](C:\Users\53545\AppData\Roaming\Typora\typora-user-images\image-20230205171031737.png)
+![image-20230205171031737](https://cdn.jsdelivr.net/gh/cq535454518/cq_images@main/img1/image-20230205171031737.png)
 
 ## 安装install
 
