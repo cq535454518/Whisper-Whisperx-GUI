@@ -67,3 +67,28 @@ You need to install Python 3, cuda, Whisper and FFmpeg by yourself.
 This tool is designed according to the version with graphics card. There is no test in the pure cpu environment, and the code may need to be modified.
 本工具只是提供方便操作的Gui界面，适合有一定基础的人使用。
 This tool only provides a user-friendly gui interface, which is suitable for people with a certain foundation.
+### 请确认已有Pyhton以及FFmpeg
+###Please confirm that Pyhton and FFmpeg are available
+```
+```
+python --version
+python --version
+ffmpeg -version
+ffmpeg -version
+```
+```
+### 执行run.vbs/run.bat
+###Execute run.vbs/run.bat
+这样启动可以无窗口直接启动
+In this way, you can start directly without windows
+### 双击执行Whisper_Gui.py/Whisper_Gui_en.py
+###Double-click to execute Whisper_ Gui.py/Whisper_ Gui_ en.py
+有黑窗，但可以看到程序运行和输出
+There is a black window, but you can see the program running and output
+
+
+## 致谢
+
+部分灵感来源于https://github.com/ADT109119/WhisperGUI
+
+whisperx：https://github.com/m-bain/whisperX
