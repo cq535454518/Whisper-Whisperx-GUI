@@ -292,7 +292,6 @@ class WinGUI(Tk):
             self.tk_table_task_list.set(tree_num, column='状态', value="识别中~")
             commandStr = create_commandStr(file_path, output_dirInput, tree_num)
             print(commandStr)
-            return 0
             start_time = time.time()
             out = subprocess.run(commandStr)
             # (out, err) = out.communicate()
