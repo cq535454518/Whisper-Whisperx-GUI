@@ -71,8 +71,6 @@ This tool only provides a user-friendly gui interface, which is suitable for peo
 ###Please confirm that Pyhton and FFmpeg are available
 ```
 python --version
-python --version
-ffmpeg -version
 ffmpeg -version
 ```
 
