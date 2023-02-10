@@ -80,6 +80,7 @@ class WinGUI(Tk):
                     config[obj.name] = self.tk_tabs_xuanxiang_ka.tk_tabs_xuanxiang_ka_0.deviceDecode()
             elif obj_type in ["Radiobutton", "Checkbutton"]:
                 config[obj.name] = obj.var.get()
+                # print("组件类型：", obj_type, "指针：", obj, "组件名：", obj.name, "值：", obj.var.get())
         return config
 
 
@@ -87,7 +88,7 @@ class WinGUI(Tk):
     def __win(self):
         self.title("whisper Gui")
         # 设置窗口大小、居中
-        width = 620
+        width = 680
         height = 620
         screenwidth = self.winfo_screenwidth()
         screenheight = self.winfo_screenheight()
@@ -241,7 +242,7 @@ class WinGUI(Tk):
                 commandStr = commandStr + " --condition_on_previous_text %s " % ("False")
 
             # 启用vad_filter(whisperx)
-            if task_config["enable_vad_filter"] == '1' and self.run_whisper_fun.get() == '1':
+            if task_config["enable_vad_filter"] == '1' and task_config["main_program"] == '1':
                 commandStr = commandStr + " --vad_filter"
 
             return commandStr
@@ -261,6 +262,9 @@ class WinGUI(Tk):
                 return 0
             File_old = ""
             output_dirInput = self.tk_input_output_dir.get()
+            if output_dirInput == "":
+                self.tk_table_task_list.set(tree_num, column='Status', value="Miss config")
+                return 0
             temp_path = os.path.join(os.getcwd() + "\\temp")
             # 如果转化开关打开，那么视频将会转化成音频后再处理
             if task_config["Fix Timestamp"] != "Disabled" and video_check:
@@ -284,10 +288,17 @@ class WinGUI(Tk):
                     print(out.communicate())
 
                 if not os.path.exists(audio_path):
-                    print(audio_path, "--Failed to generate audio!")
+                    self.tk_table_task_list.set(tree_num, column='Status', value="Build failed!")
                 else:
+                    self.tk_table_task_list.set(tree_num, column='Status', value="Build succeeded！")
                     File_old = file_path
                     file_path = audio_path
+
+            # 是否开启只提取音频
+            if task_config['main_program'] == '2':
+                if audio_check:
+                    self.tk_table_task_list.set(tree_num, column='Status', value="Already audio")
+                return 0
 
             self.tk_table_task_list.set(tree_num, column='Status', value="Running~")
             commandStr = create_commandStr(file_path, output_dirInput, tree_num)
@@ -424,18 +435,18 @@ class WinGUI(Tk):
     def __tk_radio_button_run_whisper_fun(self):
         self.run_whisper_fun = StringVar(self, value="0")
         radiobutton1 = Radiobutton(self, text="whisper", variable=self.run_whisper_fun, value=0)
-        radiobutton1.place(relx=0.58, rely=0.77, width=80, height=24)
+        radiobutton1.place(relx=0.56, rely=0.77, width=90, height=24)
         radiobutton2 = Radiobutton(self, text="whisperx", variable=self.run_whisper_fun, value=1)
-        radiobutton2.place(relx=0.80, rely=0.77, width=80, height=24)
+        radiobutton2.place(relx=0.69, rely=0.77, width=90, height=24)
+        radiobutton3 = Radiobutton(self, text="Extract audio", variable=self.run_whisper_fun, value=2)
+        radiobutton3.place(relx=0.82, rely=0.77, width=90, height=24)
         # 存储config相关
         # radiobutton1.bind("<Button-1>", update_data)
         # radiobutton2.bind("<Button-1>", update_data)
+        # 新的配置方法，只需要保留一个选项的就可以触发，因为监控的是StringVar值的变化，所以不管触发哪一个按钮，都可以触发相关事件
         radiobutton1.var = self.run_whisper_fun
-        radiobutton2.var = self.run_whisper_fun
         object_list.append(radiobutton1)
-        object_list.append(radiobutton2)
         radiobutton1.name = "main_program"
-        radiobutton2.name = "main_program"
         return 1
 
 
