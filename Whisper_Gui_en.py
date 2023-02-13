@@ -583,7 +583,7 @@ class Frame_xuanxiang_ka_1(Frame):
 
 
     def __tk_check_button_jy_condition_on(self):
-        self.jy_condition_on = StringVar(self, value="1")
+        self.jy_condition_on = StringVar(self, value="0")
         cb = Checkbutton(self,text="Disable--condition_on_pr.. Reduce errors", variable=self.jy_condition_on, onvalue="1",
                                      offvalue="0")
         cb.place(x=10, y=30, width=280, height=49)
