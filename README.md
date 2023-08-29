@@ -2,6 +2,8 @@
 
 本工具是python tkinter编写的一个简单的Gui，任务批量管理器。通过Gui选项生成*CMD*(command),来调用whisper，达到批量生成，管理的目的。
 
+# faster-Whisper GUI
+隔壁-在另一个项目里面更新了faster-whisper-GUI，比whisper快几十倍的模型，强烈推荐！
 
 
 ## 注意：
